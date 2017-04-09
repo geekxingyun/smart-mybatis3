@@ -5,23 +5,6 @@ Write less code to generate a lot of code,Make Mybatis3 become more Smarter and 
 
 What will happen?
 
-if you want to create a *Mapper.xml,please do this:
-
-SmartConstant smartConstant3=new SmartConstant();
-
-smartConstant3.smartModelObject=CustomerBean.class; 
-
-smartConstant3.smartIDaoObject=CustomerIDao.class;
-
-smartConstant3.t_table_name="t_customer"; 
-
-smartConstant3.primarykeyName="customerId";
-
-smartConstant3.showConsoleSwitch=true;//default is true 
-
-smartConstant3.showFileSwitch=true;//default is true
-
-SmartMybatis3.autoCreateMyBatis3MapperFile(smartConstant3);
 
 if you want to create a table ,plase do this:
 
