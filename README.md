@@ -5,7 +5,7 @@ Write less code to generate a lot of code,Make Mybatis3 become more Smarter and 
 
 What will happen?
 
-only need three line, and you can do this:
+only need six line, and you can do this:
 
 auto create a IDaoInterface,
 
