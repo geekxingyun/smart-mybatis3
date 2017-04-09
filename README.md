@@ -42,3 +42,4 @@ smartConstant0.showConsoleSwitch=true;//default is true
 smartConstant0.showFileSwitch=true;//default is true 
 SmartMybatis3.autoCreateObjectIService(smartConstant0);
 
+
