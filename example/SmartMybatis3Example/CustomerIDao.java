@@ -8,11 +8,11 @@ public interface CustomerIDao{
 
         void insertCustomer(CustomerBean customerBean);
 
-        void deleteCustomer(Long customerBeanId);
+        void deleteCustomer(Long customerId);
 
         void updateCustomerById(CustomerBean customerBean);
 
-        CustomerBean selectCustomerById(Long customerBeanId);
+        CustomerBean selectCustomerById(Long customerId);
 
         List<CustomerBean> selectAllCustomerList();
 
