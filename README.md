@@ -7,7 +7,6 @@ What will happen?
 
 if you want to create a IDao interface,please do this:
 
-//auto create a IDao file 
 SmartConstant smartConstant=new SmartConstant();
 smartConstant.smartModelObject=CustomerBean.class;
 smartConstant.IDaoPackageName="test.IDao"; 
@@ -17,7 +16,6 @@ SmartMybatis3.autoCreateObjectIDao(smartConstant);
 
 if you want to create a *Mapper.xml,please do this:
 
-//auto create *Mapper.xml 
 SmartConstant smartConstant3=new SmartConstant();
 smartConstant3.smartModelObject=CustomerBean.class; 
 smartConstant3.smartIDaoObject=CustomerIDao.class;
@@ -29,7 +27,6 @@ SmartMybatis3.autoCreateMyBatis3MapperFile(smartConstant3);
 
 if you want to create a table ,plase do this:
 
-//auto create create table SQL Statement 
 SmartConstant smartConstant4=new SmartConstant(); 
 smartConstant4.smartModelObject=CustomerBean.class; 
 smartConstant4.t_table_name="t_customer";//table name 
@@ -38,7 +35,6 @@ smartConstant4.showConsoleSwitch=true;//default is true,switch display on Consol
 
 if you want to create a IService file,please do this:
 
-//auto create a IService file 
 SmartConstant smartConstant0=new SmartConstant(); 
 smartConstant0.smartModelObject=CustomerBean.class; 
 smartConstant0.ISERVICE_PACKAGE_NAME="test.IService";
