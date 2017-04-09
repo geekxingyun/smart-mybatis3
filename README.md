@@ -15,5 +15,5 @@ auto createa a *Mapper.xml
 
 auto create a  mysql table sql statement.
 
-if you want to how to use it ,please visit  https://github.com/geekxingyun/SmartMybatis3/wiki/Getting-Started
+if you want to know how to use it ,please visit  https://github.com/geekxingyun/SmartMybatis3/wiki/Getting-Started
 
