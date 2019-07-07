@@ -145,8 +145,8 @@ public class UserInfo {
 ## 我的微信公众号
 
 <p>
-	<a href="https://img2018.cnblogs.com/blog/622489/201906/622489-20190629001321367-513723942.jpg">
-	<img src="https://img2018.cnblogs.com/blog/622489/201906/622489-20190629001321367-513723942.jpg" width="253" height="340"></a>
+	<a href="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/public-webchat.jpg?raw=true">
+	<img src="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/public-webchat.jpg?raw=true" width="253" height="340"></a>
 <p>
 
 # 免费加入我的知识星球
