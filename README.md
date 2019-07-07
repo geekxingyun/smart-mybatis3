@@ -1,21 +1,86 @@
 # SmartMybatis3
-Write less code to generate a lot of code,Make Mybatis3 become more Smarter and more intelligent.
 
-What will happen?
+# 1.为什么创建这个仓库？
 
-only need six line, and you can do this:
+大家好,我是星云, 相信大家应该都知道的是[MyBatis3](http://www.mybatis.org/mybatis-3/zh/index.html) 框架是一款优秀的持久层框架，但是我觉得它并不完美。
 
-auto create a IDaoInterface,
+为什么这么说呢？ 请大家跟我一起来看MyBatis3 现存的几个痛点
 
-auto create a IServiceInterface,
+## 1.1 痛点一：MyBatis3 使用XML实体类和数据库表字段映射
 
-auto createa a *Mapper.xml
+使用过MyBatis3 的应该都知道,像下面这样，在实际开发中，实体类和数据库表字段一般并不相同，需要一种映射。
 
-auto create a  mysql table sql statement.
+为了实现这种映射，我们经常需要定义这样一个resultMap 标签
 
-if you want to know how to use it ,please visit  https://github.com/geekxingyun/SmartMybatis3/wiki/Getting-Started
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-定义实体类
+<mapper namespace="com.xingyun.sample.model.UserInfoMapper">
+  <resultMap type="com.xingyun.sample.model.UserInfo" id="UserInfoResultMap">
+    <id column="userId" property="USER_ID"/>
+    <result column="userName" property="USER_NAME"/>
+    <result column="userPassword" property="USER_PASSWORD"/>
+    <result column="userAge" property="USER_AGE"/>
+  </resultMap>
+  
+  <select id="findAllUserInfo" resultMap="UserInfoResultMap">
+  </select>
+</mapper>
+```
+一般来说没什么问题，但是如果实体类字段特别多的话自己写起来就很麻烦。
+
+那么有没有更简便的方法呢？
+
+如果你愿意使用当前类库，那么你只需要添加如下代码
+```
+        //打印MyBatis3 XML实体类映射Map
+        IDBColumnXMLHandler idbColumnXMLHandler= SmartMyBatis3App.getDBColumnXMLHandler();
+        System.out.println("----打印MyBatis3 XML实体类映射Map开始----");
+        idbColumnXMLHandler.printDocument(UserInfo.class);
+        System.out.println("----打印MyBatis3 XML实体类映射Map结束----");
+```
+然后就可以输出我们想要的结果：
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xingyun.sample.model.UserInfoMapper">
+  <resultMap type="com.xingyun.sample.model.UserInfo" id="UserInfoResultMap">
+    <id column="userId" property="USER_ID"/>
+    <result column="userName" property="USER_NAME"/>
+    <result column="userPassword" property="USER_PASSWORD"/>
+    <result column="userAge" property="USER_AGE"/>
+  </resultMap>
+</mapper>
+```
+## 痛点二：注解方式返回实体类与数据库字段映射
+
+如果你使用的不是XML配置方式，而是通过注解方式的的话，那么我们可能需要这么做。
+
+```
+    @Select(value = "SELECT * FROM t_user_info")
+    @Results({
+	@Result(property ="userId",column ="USER_ID",javaType=Integer.class),
+	@Result(property ="userName",column ="USER_NAME",javaType=String.class),
+	@Result(property ="userPassword",column ="USER_PASSWORD",javaType=String.class),
+	@Result(property ="userAge",column ="USER_AGE",javaType=Integer.class),
+    })
+    JobInfo findUserInfo();
+```
+
+如果字段特别多，那么手写将会很累。
+
+但是如果使用当前的类库那么只需要编写如下代码即可自动生成：
+```
+ //打印MyBatis3 注解实体类映射Map
+        iDBColumnAnnotationHandler= SmartMyBatis3App.getDBColumnAnnotationHandler();
+        String result=iDBColumnAnnotationHandler.autoCreateMappingModel(UserInfo.class);
+        System.out.println("----打印MyBatis3 注解实体类映射Map开始----");
+        System.out.println(result);
+        System.out.println("----打印MyBatis3 注解实体类映射Map结束---");
+```
+上述操作的前提需要在实体类中添加一些注解
 ```
 import com.xingyun.annotations.model.DBColumn;
 import com.xingyun.annotations.model.DBConstraints;
@@ -56,140 +121,4 @@ public class UserInfo {
     private Integer userAge;
 }
 ```
-调用方式：
-
-```
-import com.xingyun.SmartMyBatis3App;
-import com.xingyun.annotations.processor.interfaces.IDBColumnAnnotationHandler;
-import com.xingyun.annotations.processor.interfaces.IDBColumnXMLHandler;
-import com.xingyun.annotations.processor.interfaces.IDBTableXMLHandler;
-import com.xingyun.annotations.processor.interfaces.ISmartObjectHandler;
-
-import java.util.List;
-
-public class UserInfoTest {
-
-    public static void main(String[] args) {
-        UserInfoTest userInfoTest=new UserInfoTest();
-        userInfoTest.test();
-    }
-
-    IDBTableXMLHandler iDBTableXMLHandler;
-
-    IDBColumnXMLHandler idbColumnXMLHandler;
-
-    IDBColumnAnnotationHandler iDBColumnAnnotationHandler;
-
-    ISmartObjectHandler iSmartObjectHandler;
-
-    private void test(){
-        //打印MyBatis3 映射表名
-        iDBTableXMLHandler= SmartMyBatis3App.getDBTableXMLHandler();
-        String dbTableName=iDBTableXMLHandler.getDBTableName(UserInfo.class);
-        System.out.println("----打印MyBatis3 映射表名开始----");
-        System.out.println(dbTableName);
-        System.out.println("----打印MyBatis3 映射表名结束----");
-
-        //打印MyBatis3 XML实体类映射Map
-        idbColumnXMLHandler= SmartMyBatis3App.getDBColumnXMLHandler();
-        System.out.println("----打印MyBatis3 XML实体类映射Map开始----");
-        idbColumnXMLHandler.printDocument(UserInfo.class);
-        System.out.println("----打印MyBatis3 XML实体类映射Map结束----");
-
-        //打印MyBatis3 注解实体类映射Map
-        iDBColumnAnnotationHandler= SmartMyBatis3App.getDBColumnAnnotationHandler();
-        String result=iDBColumnAnnotationHandler.autoCreateMappingModel(UserInfo.class);
-        System.out.println("----打印MyBatis3 注解实体类映射Map开始----");
-        System.out.println(result);
-        System.out.println("----打印MyBatis3 注解实体类映射Map结束---");
-
-        //打印UserInfo 对象字段集合
-        iSmartObjectHandler=SmartMyBatis3App.getSmartObjectHandler();
-        List<String> fieldNameList=iSmartObjectHandler.getFieldNameList(UserInfo.class);
-        System.out.println("----打印UserInfo 对象字段集合开始---");
-        for (String fieldName:fieldNameList
-             ) {
-            System.out.println(fieldName);
-        }
-        System.out.println("----打印UserInfo 对象字段集合结束---");
-
-        //打印 带包名的字段类型集合
-        List<String> fieldTypeList=iSmartObjectHandler.getFieldTypeList(UserInfo.class);
-        System.out.println("----打印 带包名的字段类型集合开始---");
-        for (String fieldType:fieldTypeList
-        ) {
-            System.out.println(fieldType);
-        }
-        System.out.println("----打印 带包名的字段类型集合结束---");
-
-        //打印 不带包名的字段类型集合
-        List<String> fieldSimpleTypeList=iSmartObjectHandler.getFieldSimpleTypeList(UserInfo.class);
-        System.out.println("----打印 不带包名的字段类型集合开始---");
-        for (String fieldSimpleType:fieldSimpleTypeList
-        ) {
-            System.out.println(fieldSimpleType);
-        }
-        System.out.println("----打印 不带包名的字段类型集合结束---");
-
-        //打印 注解映射表名的字段类型集合
-        List<String> dbColumnNameList=iSmartObjectHandler.getDBColumnList(UserInfo.class);
-        System.out.println("----打印 注解映射表名的字段类型集合开始---");
-        for (String dbColumnName:dbColumnNameList
-        ) {
-            System.out.println(dbColumnName);
-        }
-        System.out.println("----打印 注解映射表名的字段类型集合结束---");
-    }
-}
-```
-输出结果如下:
-```
-----打印MyBatis3 映射表名开始----
-t_user_info
-----打印MyBatis3 映射表名结束----
-----打印MyBatis3 XML实体类映射Map开始----
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.xingyun.sample.model.UserInfoMapper">
-  <resultMap type="com.xingyun.sample.model.UserInfo" id="UserInfoResultMap">
-    <id column="userId" property="USER_ID"/>
-    <result column="userName" property="USER_NAME"/>
-    <result column="userPassword" property="USER_PASSWORD"/>
-    <result column="userAge" property="USER_AGE"/>
-  </resultMap>
-</mapper>
-----打印MyBatis3 XML实体类映射Map结束----
-----打印MyBatis3 注解实体类映射Map开始----
-@Results({
-	@Result(property ="userId",column ="USER_ID",javaType=Integer.class),
-	@Result(property ="userName",column ="USER_NAME",javaType=String.class),
-	@Result(property ="userPassword",column ="USER_PASSWORD",javaType=String.class),
-	@Result(property ="userAge",column ="USER_AGE",javaType=Integer.class),
-})
-----打印MyBatis3 注解实体类映射Map结束---
-----打印UserInfo 对象字段集合开始---
-userId
-userName
-userPassword
-userAge
-----打印UserInfo 对象字段集合结束---
-----打印 带包名的字段类型集合开始---
-java.lang.Integer
-java.lang.String
-java.lang.String
-java.lang.Integer
-----打印 带包名的字段类型集合结束---
-----打印 不带包名的字段类型集合开始---
-Integer
-String
-String
-Integer
-----打印 不带包名的字段类型集合结束---
-----打印 注解映射表名的字段类型集合开始---
-USER_ID
-USER_NAME
-USER_PASSWORD
-USER_AGE
-----打印 注解映射表名的字段类型集合结束---
-```
+更多用法参考Wiki
