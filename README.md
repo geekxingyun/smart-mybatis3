@@ -146,7 +146,7 @@ public class UserInfo {
 
 <p>
 	<a href="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/public-webchat.jpg?raw=true">
-	<img src="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/public-webchat.jpg?raw=true" width="253" height="340"></a>
+	<img src="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/public-webchat.jpg?raw=true"></a>
 <p>
 
 # 免费加入我的知识星球
