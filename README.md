@@ -142,3 +142,54 @@ public class UserInfoTest {
     }
 }
 ```
+输出结果如下:
+```
+----打印MyBatis3 映射表名开始----
+t_user_info
+----打印MyBatis3 映射表名结束----
+----打印MyBatis3 XML实体类映射Map开始----
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xingyun.sample.model.UserInfoMapper">
+  <resultMap type="com.xingyun.sample.model.UserInfo" id="UserInfoResultMap">
+    <id column="userId" property="USER_ID"/>
+    <result column="userName" property="USER_NAME"/>
+    <result column="userPassword" property="USER_PASSWORD"/>
+    <result column="userAge" property="USER_AGE"/>
+  </resultMap>
+</mapper>
+----打印MyBatis3 XML实体类映射Map结束----
+----打印MyBatis3 注解实体类映射Map开始----
+@Results({
+	@Result(property ="userId",column ="USER_ID",javaType=Integer.class),
+	@Result(property ="userName",column ="USER_NAME",javaType=String.class),
+	@Result(property ="userPassword",column ="USER_PASSWORD",javaType=String.class),
+	@Result(property ="userAge",column ="USER_AGE",javaType=Integer.class),
+})
+----打印MyBatis3 注解实体类映射Map结束---
+----打印UserInfo 对象字段集合开始---
+userId
+userName
+userPassword
+userAge
+----打印UserInfo 对象字段集合结束---
+----打印 带包名的字段类型集合开始---
+java.lang.Integer
+java.lang.String
+java.lang.String
+java.lang.Integer
+----打印 带包名的字段类型集合结束---
+----打印 不带包名的字段类型集合开始---
+Integer
+String
+String
+Integer
+----打印 不带包名的字段类型集合结束---
+----打印 注解映射表名的字段类型集合开始---
+USER_ID
+USER_NAME
+USER_PASSWORD
+USER_AGE
+----打印 注解映射表名的字段类型集合结束---
+```
