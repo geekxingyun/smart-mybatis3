@@ -120,7 +120,7 @@ public class UserInfo {
 
 # 2. 了解更多
 
-关于如何集成已经项目实现思路，[移步Wiki](https://github.com/geekxingyun/SmartMybatis3/wiki) 
+关于如何集成以及项目实现思路，[移步Wiki](https://github.com/geekxingyun/SmartMybatis3/wiki) 
 
 # 3. 关于我
 
