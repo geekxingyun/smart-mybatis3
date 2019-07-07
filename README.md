@@ -1,9 +1,9 @@
-### 3.1.为什么创建SmartMyBatis3？
+# 1. 为什么创建SmartMyBatis3？
 大家好,我是星云, 相信大家应该都知道的是[MyBatis3](http://www.mybatis.org/mybatis-3/zh/index.html) 框架是一款优秀的持久层框架，但是我觉得它并不完美。
 
 为什么这么说呢？ 请大家跟我一起来看MyBatis3 现存的几个痛点
 
-#### 3.1.1 痛点一：MyBatis3 使用XML实体类和数据库表字段映射
+## 1.2 痛点一：MyBatis3 使用XML实体类和数据库表字段映射
 
 使用过MyBatis3 的应该都知道,像下面这样，在实际开发中，实体类和数据库表字段一般并不相同，需要一种映射。
 
@@ -51,7 +51,7 @@
   </resultMap>
 </mapper>
 ```
-#### 3.1.2 痛点二：注解方式返回实体类与数据库字段映射
+## 1.2 痛点二：注解方式返回实体类与数据库字段映射
 
 如果你使用的不是XML配置方式，而是通过注解方式的的话，那么我们可能需要这么做。
 ```
@@ -117,3 +117,5 @@ public class UserInfo {
     private Integer userAge;
 }
 ```
+
+关于如何集成已经项目实现思路，[移步Wiki](https://github.com/geekxingyun/SmartMybatis3/wiki) 
