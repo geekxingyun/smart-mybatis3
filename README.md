@@ -142,6 +142,13 @@ public class UserInfo {
 
 [星云微博](https://weibo.com/xingyunsky)
 
+## 我的微信公众号
+
+<p>
+	<a href="https://img2018.cnblogs.com/blog/622489/201906/622489-20190629001321367-513723942.jpg">
+	<img src="https://img2018.cnblogs.com/blog/622489/201906/622489-20190629001321367-513723942.jpg" width="253" height="340"></a>
+<p>
+
 # 免费加入我的知识星球
 
 <p><a href="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/my_world.png?raw=true"> <img src="https://github.com/geekxingyun/SpringBootBestPracticesSample/blob/master/resources/images/my_world.png?raw=true" width="253" height="340"><a><p>
