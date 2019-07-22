@@ -146,11 +146,11 @@ pom.xml中添加依赖
 ```
 ##### 方式二：直接将jar 添加到项目中
 
-## 更多详情
+# 3. 更多详情
 
-关于如何集成以及项目实现思路，[移步Wiki](https://github.com/geekxingyun/SmartMybatis3/wiki) 
+关于如何集成以及项目实现思路，[Java之注解的魔法](https://xingyun.blog.csdn.net/article/details/94833245)
 
-# 3. 关于我
+# 4. 关于我
 
 > 交流即分享，分享才能进步！不对之处，还请各位前辈多多指教。  by 星云
 
