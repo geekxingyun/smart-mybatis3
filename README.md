@@ -117,12 +117,7 @@ public class UserInfo {
     private Integer userAge;
 }
 ```
-
-
-
-# 2. 了解更多
-
-## 如何集成
+# 2. 如何集成
 
  #### 下载依赖
 
