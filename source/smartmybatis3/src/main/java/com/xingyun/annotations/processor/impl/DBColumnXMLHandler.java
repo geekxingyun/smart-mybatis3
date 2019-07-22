@@ -46,15 +46,20 @@ public class DBColumnXMLHandler implements IDBColumnXMLHandler {
             }
             //有约束注解
             if(null!=dbConstraints){
+                //不是主键
                 if(dbConstraints.primaryKey()){
                     idElement=resultMapElement.addElement("id");
-                    idElement.addAttribute("column",field.getName());
-                    idElement.addAttribute("property",dbColumnName);
+                    resultElement.addAttribute("column",dbColumnName);
+                    resultElement.addAttribute("property",field.getName());
                 }else{
                     resultElement=resultMapElement.addElement("result");
-                    resultElement.addAttribute("column",field.getName());
-                    resultElement.addAttribute("property",dbColumnName);
+                    resultElement.addAttribute("column",dbColumnName);
+                    resultElement.addAttribute("property",field.getName());
                 }
+            }else{
+                 resultElement=resultMapElement.addElement("result");
+                 resultElement.addAttribute("column",dbColumnName);
+                 resultElement.addAttribute("property",field.getName());
             }
         }
         return document;
