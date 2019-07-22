@@ -15,10 +15,10 @@
 
 <mapper namespace="com.xingyun.sample.model.UserInfoMapper">
   <resultMap type="com.xingyun.sample.model.UserInfo" id="UserInfoResultMap">
-    <id column="userId" property="USER_ID"/>
-    <result column="userName" property="USER_NAME"/>
-    <result column="userPassword" property="USER_PASSWORD"/>
-    <result column="userAge" property="USER_AGE"/>
+    <id column="USER_ID" property="userId"/>
+    <result column="USER_NAME" property="userName"/>
+    <result column="USER_PASSWORD" property="userPassword"/>
+    <result column="USER_AGE" property="userAge"/>
   </resultMap>
   
   <select id="findAllUserInfo" resultMap="UserInfoResultMap">
@@ -44,10 +44,10 @@
 
 <mapper namespace="com.xingyun.sample.model.UserInfoMapper">
   <resultMap type="com.xingyun.sample.model.UserInfo" id="UserInfoResultMap">
-    <id column="userId" property="USER_ID"/>
-    <result column="userName" property="USER_NAME"/>
-    <result column="userPassword" property="USER_PASSWORD"/>
-    <result column="userAge" property="USER_AGE"/>
+    <id column="USER_ID" property="userId"/>
+    <result column="USER_NAME" property="userName"/>
+    <result column="USER_PASSWORD" property="userPassword"/>
+    <result column="USER_AGE" property="userAge"/>
   </resultMap>
 </mapper>
 ```
@@ -118,7 +118,13 @@ public class UserInfo {
 }
 ```
 
+
+
 # 2. 了解更多
+
+## 如何集成
+
+## 更多详情
 
 关于如何集成以及项目实现思路，[移步Wiki](https://github.com/geekxingyun/SmartMybatis3/wiki) 
 
