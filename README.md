@@ -124,6 +124,33 @@ public class UserInfo {
 
 ## 如何集成
 
+ #### 下载依赖
+
+下载地址：https://github.com/geekxingyun/SmartMybatis3/tree/master/lib 
+
+ #### 添加依赖
+
+##### 方式一：安装到本地仓库（推荐）
+-  双击 install-smart-mybatis3-1.0-RELEASE.bat 
+ - 或者在*.jar 同级目录下执行maven 安装jar到本地仓库命令
+```
+mvn install:install-file -DgroupId=com.xingyun -DartifactId=smart-mybatis3 -Dversion=1.0-RELEASE -Dpackaging=jar -Dfile=smart-mybatis3-1.0-RELEASE.jar
+```
+pom.xml中添加依赖
+```
+<dependency>
+            <groupId>com.xingyun</groupId>
+            <artifactId>smart-mybatis3</artifactId>
+            <version>1.0-RELEASE</version>
+</dependency>
+<dependency> 
+      <groupId>org.dom4j</groupId>
+      <artifactId>dom4j</artifactId> 
+      <version>2.1.1</version> 
+</dependency>
+```
+##### 方式二：直接将jar 添加到项目中
+
 ## 更多详情
 
 关于如何集成以及项目实现思路，[移步Wiki](https://github.com/geekxingyun/SmartMybatis3/wiki) 
